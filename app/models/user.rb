@@ -12,4 +12,9 @@ class User < ApplicationRecord
 
   # Validations for phone_number
   validates :phone_number, presence: true, format: { with: /\A\d{10}\z/, message: "must be a valid 10-digit number" }
+
+      # This adds methods to set and authenticate against a BCrypt password.
+
+  
 end
+
