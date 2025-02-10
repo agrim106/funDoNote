@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: "aalekhmodgil8@gmail.com"
+  default from: "agrimchaudhary2@gmail.com"
 
   def self.enqueue_otp_email(user, otp)
     channel = RabbitMQ.create_channel
