@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   namespace :api do
     namespace :v1 do
       post "users", to: "users#userRegistration"
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
       put "notes/trashToggle/:id", to: "notes#trashToggle"
       put "notes/archiveToggle/:id", to: "notes#archiveToggle"
       put "notes/updateColour/:id/:colour", to: "notes#updateColour"
+      
     end
   end
 end

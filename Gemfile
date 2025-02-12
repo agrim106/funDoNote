@@ -28,6 +28,18 @@ gem "mail"
 
 gem "bunny"
 
+group :development, :test do
+  gem 'rswag-api'
+  # gem 'rswag-ui'
+  gem 'rswag-specs'
+end
+group :development, :test do
+  gem 'rspec-rails'
+end
+gem 'rswag-ui', '~> 2.16.0'
+
+
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
@@ -69,3 +81,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "redis", "~> 5.3"
+
+gem "rswag", "~> 2.16"

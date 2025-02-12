@@ -1,0 +1,164 @@
+---
+openapi: 3.0.1
+info:
+  title: Fundoo Notes API
+  version: v1
+  description: API documentation for Fundoo Notes, including authentication and note
+    management.
+paths:
+  "/api/v1/notes":
+    get:
+      summary: Retrieves all notes
+      tags:
+      - Notes
+      responses:
+        '200':
+          description: notes retrieved
+    post:
+      summary: Creates a note
+      tags:
+      - Notes
+      parameters: []
+      responses:
+        '201':
+          description: note created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+              required:
+              - title
+              - content
+  "/api/v1/notes/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: Note ID
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Retrieves a note
+      tags:
+      - Notes
+      responses:
+        '200':
+          description: note found
+        '404':
+          description: note not found
+    put:
+      summary: Updates a note
+      tags:
+      - Notes
+      parameters: []
+      responses:
+        '200':
+          description: note updated
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+    delete:
+      summary: Deletes a note
+      tags:
+      - Notes
+      responses:
+        '204':
+          description: note deleted
+  "/api/v1/users":
+    get:
+      summary: Retrieves all users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: users retrieved
+    post:
+      summary: Creates a user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: user created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - name
+              - email
+              - password
+  "/api/v1/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: User ID
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Retrieves a user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: user found
+        '404':
+          description: user not found
+    put:
+      summary: Updates a user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '200':
+          description: user updated
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+    delete:
+      summary: Deletes a user
+      tags:
+      - Users
+      responses:
+        '204':
+          description: user deleted
+servers:
+- url: http://localhost:3000
+  description: Local Development Server
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+- BearerAuth: []
